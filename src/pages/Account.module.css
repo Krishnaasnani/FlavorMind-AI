@@ -1,0 +1,16 @@
+.page { display: grid; place-items: center; min-height: min(600px, calc(100vh - 10rem)); }
+.card { width: min(100%, 32rem); padding: 2rem; border: 1px solid var(--line-light); border-radius: var(--radius); background: var(--card-bg-light); box-shadow: var(--shadow); }
+:global(body.dark) .card { border-color: var(--line-dark); background: var(--card-bg-dark); }
+.eyebrow { margin: 0 0 0.45rem; color: var(--primary-strong); font-size: 0.7rem; font-weight: 850; letter-spacing: 0.12em; }
+.card h1 { margin: 0; color: var(--text-light); font-family: Georgia, serif; font-size: 2.3rem; }
+:global(body.dark) .card h1 { color: var(--text-dark); }
+.email { margin: 0.35rem 0 1.4rem; color: var(--muted-light); }
+:global(body.dark) .email { color: var(--muted-dark); }
+.links { display: grid; gap: 0.55rem; margin-bottom: 1.5rem; }
+.links a { padding: 0.75rem 0.85rem; border: 1px solid var(--line-light); border-radius: 0.65rem; color: var(--text-light); font-weight: 700; text-decoration: none; }
+.links a:hover { border-color: var(--primary); color: var(--primary-strong); }
+:global(body.dark) .links a { border-color: var(--line-dark); color: var(--text-dark); }
+.logout { min-height: 2.7rem; padding: 0 1rem; border: 1px solid var(--line-light); border-radius: 0.65rem; color: var(--primary-strong); background: transparent; font-weight: 800; }
+.logout:hover { border-color: var(--primary); background: var(--primary-soft); }
+:global(body.dark) .logout { border-color: var(--line-dark); }
+.error { margin: 0 0 0.75rem; color: #a53323; font-size: 0.82rem; }

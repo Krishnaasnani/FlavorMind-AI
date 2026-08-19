@@ -1,70 +1,116 @@
-# Getting Started with Create React App
+# RecipeFinder AI
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+RecipeFinder AI is a responsive recipe discovery app built around TheMealDB. Search by recipe name or ingredient, browse by category and area, save favourites, plan the week, and turn planned recipes into a persistent shopping list. Optional server-side Gemini integration powers the AI cooking assistant and recipe explanations.
 
-## Available Scripts
+![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)
+![TheMealDB](https://img.shields.io/badge/TheMealDB-Recipe%20API-6AAE3F)
+![Google Gemini](https://img.shields.io/badge/Google%20Gemini-AI-4285F4)
 
-In the project directory, you can run:
+## Key features
 
-### `npm start`
+- Search TheMealDB by recipe name or ingredient.
+- Browse recipes by category and area/cuisine.
+- Get transparent, preference-aware recommendations from available recipes and favourites.
+- Save and remove favourite recipes with browser persistence.
+- Build a Monday–Sunday meal plan with breakfast, lunch, and dinner slots.
+- Generate a shopping list from planned recipes, merge compatible ingredients, add manual items, and adjust quantities.
+- Keep shopping-list data and checked state in `localStorage`.
+- Use Ask AI Chef, ingredient substitutions, health explanations, and “Why this recipe?” explanations when an AI provider is configured.
+- Responsive layout with light and dark themes.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Tech stack
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- React 19 and Create React App
+- React Router
+- TheMealDB public API
+- Express server for the AI proxy
+- Google Gemini Flash API (optional)
+- CSS Modules and CSS custom properties
+- `@hello-pangea/dnd` for meal-plan drag and drop
+- `react-hot-toast` for notifications
 
-### `npm test`
+## Project structure
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```text
+server.js                 Express entry point for the optional AI backend
+server/                   Server-side AI handler and validation
+src/
+├── components/           Recipe cards, search, filters, navigation, AI chat
+├── context/              Favourites, meal-plan, and theme providers
+├── hooks/                Persistent state and recipe-search hooks
+├── pages/                Home, recipe detail, favourites, planner, shopping list
+├── services/             TheMealDB and AI request helpers
+├── utils/                Recommendation and shared recipe utilities
+├── constants/            Routes, API configuration, and shared settings
+└── setupProxy.js         Development proxy for `/api/claude/messages`
+```
 
-### `npm run build`
+## Environment variables
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Create a `.env` file in the project root. Never commit it or expose server secrets through a `REACT_APP_` variable.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```env
+# Required only for AI features; keep this server-side.
+GEMINI_API_KEY=your_gemini_api_key_here
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Optional; defaults to 3001 for `npm run server`.
+API_PORT=3001
+```
 
-### `npm run eject`
+TheMealDB requests use its public API and do not require an application key.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Installation
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+git clone <your-repository-url>
+cd recipe-finder
+npm install
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Add the optional `.env` values above if you want AI features.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Run the frontend
 
-## Learn More
+```bash
+npm start
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Open [http://localhost:3000](http://localhost:3000). In development, Create React App uses `src/setupProxy.js` for the AI route.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Run the backend
 
-### Code Splitting
+To run the Express server directly:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+npm run server
+```
 
-### Analyzing the Bundle Size
+The server listens on `http://127.0.0.1:3001` by default and exposes `/api/health` plus the existing `/api/claude/messages` compatibility endpoint. The endpoint is backed by Gemini; the legacy path is retained so the current frontend does not need a UI or API-contract change.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Tests and build
 
-### Making a Progressive Web App
+```bash
+npm test -- --watchAll=false
+npm run build
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## API and provider notes
 
-### Advanced Configuration
+- TheMealDB supplies recipe search, category, area, ingredient, and detail data.
+- Gemini is called only through the server-side Express handler. The API key is never sent to React, logged, or returned in responses.
+- AI features require a valid `GEMINI_API_KEY` and remain subject to provider availability, quotas, and network access.
+- Recommendation scoring is a small explainable heuristic; it is not a machine-learning model.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Known limitations
 
-### Deployment
+- TheMealDB’s public data varies in completeness and availability.
+- TheMealDB’s free API does not provide reliable nutrition or cooking-time data, so the app does not invent those values or provide diet filtering.
+- Favourites, meal plans, and shopping lists are stored in the current browser only; they are not synchronized between devices.
+- AI features show a friendly unavailable state when the key, quota, provider, or network is unavailable.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Future improvements
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Add optional account-based synchronization for favourites, meal plans, and shopping lists.
+- Expand preference controls and recommendation evaluation with user feedback.
+- Add a dedicated nutrition/data-enrichment provider if verified nutrition data is required.
+- Add CI checks, production observability, and broader end-to-end coverage.

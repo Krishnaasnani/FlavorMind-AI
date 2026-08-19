@@ -1,0 +1,72 @@
+.home { display: grid; }
+.hero { max-width: 48rem; padding: 1.1rem 0 1.7rem; }
+.eyebrow { margin: 0 0 0.55rem; color: var(--primary-strong); font-size: 0.7rem; font-weight: 850; letter-spacing: 0.13em; }
+.hero h1 { max-width: 16ch; margin: 0; color: var(--text-light); font-family: Georgia, serif; font-size: clamp(2.3rem, 9vw, 4.4rem); letter-spacing: -0.055em; line-height: 0.98; }
+:global(body.dark) .hero h1 { color: var(--text-dark); }
+.hero h1 em { color: var(--primary); font-style: normal; }
+.hero > p:last-child { max-width: 38rem; margin: 1rem 0 0; color: var(--muted-light); font-size: 1rem; line-height: 1.6; }
+:global(body.dark) .hero > p:last-child { color: var(--muted-dark); }
+.searchPanel { margin: 0.3rem 0 0.4rem; padding: 0.85rem; border: 1px solid var(--line-light); border-radius: var(--radius); background: var(--card-bg-light); box-shadow: var(--shadow); }
+:global(body.dark) .searchPanel { border-color: var(--line-dark); background: var(--card-bg-dark); }
+.featured { margin: 1rem 0; }
+.featuredHeading { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.35rem 1rem; }
+.featuredHeading h2 { margin: 0; color: var(--text-light); font-family: Georgia, serif; font-size: 1.05rem; }
+.featuredHeading p { margin: 0; color: var(--muted-light); font-size: 0.78rem; }
+:global(body.dark) .featuredHeading h2 { color: var(--text-dark); }
+:global(body.dark) .featuredHeading p { color: var(--muted-dark); }
+.recommendations { margin: 1.4rem 0 0.4rem; }
+.recommendationHeading { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.35rem 1rem; margin-bottom: 0.7rem; }
+.recommendationHeading h2 { margin: 0; color: var(--text-light); font-family: Georgia, serif; font-size: 1.05rem; }
+.recommendationHeading p, .recommendationEmpty { color: var(--muted-light); font-size: 0.78rem; }
+.recommendationHeading p { margin: 0; }
+.recommendationEmpty { margin: 0; padding: 1rem; border: 1px dashed var(--line-light); border-radius: 0.7rem; text-align: center; }
+:global(body.dark) .recommendationHeading h2 { color: var(--text-dark); }
+:global(body.dark) .recommendationHeading p, :global(body.dark) .recommendationEmpty { color: var(--muted-dark); }
+:global(body.dark) .recommendationEmpty { border-color: var(--line-dark); }
+.chips { display: flex; gap: 0.5rem; margin-top: 0.65rem; overflow-x: auto; padding: 0.15rem 0 0.4rem; scrollbar-width: thin; }
+.chips button { flex: 0 0 auto; min-height: 2.35rem; padding: 0 0.7rem; border: 1px solid var(--line-light); border-radius: 999px; color: var(--text-light); background: var(--card-bg-light); font-size: 0.78rem; font-weight: 750; transition: all 0.3s ease; }
+.chips button:hover, .chips .activeChip { border-color: var(--primary); color: #fff; background: var(--primary); }
+:global(body.dark) .chips button { border-color: var(--line-dark); color: var(--text-dark); background: var(--card-bg-dark); }
+.helper, .empty { margin: 2rem 0; color: var(--muted-light); text-align: center; }
+:global(body.dark) .helper, :global(body.dark) .empty { color: var(--muted-dark); }
+.resultsHeader { display: flex; align-items: start; justify-content: space-between; gap: 1rem; padding: 1.4rem 0 0.65rem; color: var(--muted-light); font-size: 0.78rem; }
+.resultsHeader p { margin: 0; color: var(--text-light); font-weight: 750; }
+:global(body.dark) .resultsHeader { color: var(--muted-dark); }
+:global(body.dark) .resultsHeader p { color: var(--text-dark); }
+.resultsHeader span { text-align: right; }
+.grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+.error { margin: 1rem 0; padding: 0.8rem 1rem; border: 1px solid #edb8ae; border-radius: 0.65rem; color: #a53323; background: #fff2ef; font-size: 0.9rem; }
+@media (min-width: 34rem) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 48rem) { .hero { padding: 2rem 0 2.4rem; }.searchPanel { padding: 1rem; }.grid { gap: 1.25rem; } }
+@media (min-width: 68rem) { .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+/* Product polish: clearer hierarchy while retaining the existing layout. */
+.home { gap: 1.4rem; min-width: 0; }
+.featured, .recommendations, .grid, .chips { min-width: 0; }
+.hero { max-width: 52rem; padding: 1.2rem 0 0.2rem; }
+.eyebrow { display: inline-flex; align-items: center; min-height: 1.7rem; margin-bottom: 0.85rem; padding: 0 0.6rem; border: 1px solid color-mix(in srgb, var(--primary) 22%, transparent); border-radius: 999px; color: var(--primary-strong); background: var(--primary-soft); font-size: 0.64rem; letter-spacing: 0.14em; }
+.hero h1 { max-width: 15ch; font-size: clamp(2.75rem, 8vw, 5.1rem); letter-spacing: -0.065em; line-height: 0.96; }
+.hero > p:last-child { max-width: 42rem; margin-top: 1.2rem; color: var(--muted-light); font-size: 1.06rem; line-height: 1.65; }
+:global(body.dark) .hero > p:last-child { color: var(--muted-dark); }
+.searchPanel { margin: 0.2rem 0 0.3rem; padding: 1rem; border-radius: var(--radius); box-shadow: var(--shadow); }
+.featured { margin: 0.4rem 0 0; }
+.featuredHeading h2, .recommendationHeading h2 { font-size: 1.2rem; letter-spacing: -0.02em; }
+.featuredHeading p, .recommendationHeading p { font-size: 0.8rem; }
+.chips { gap: 0.6rem; margin-top: 0.8rem; padding-bottom: 0.5rem; }
+.chips button { min-height: 2.45rem; padding: 0 0.85rem; border-color: var(--line-light); font-size: 0.8rem; }
+.chips button:hover, .chips .activeChip { box-shadow: 0 4px 12px color-mix(in srgb, var(--primary) 18%, transparent); }
+.recommendations { margin: 0.2rem 0 0.8rem; padding-top: 0.2rem; }
+.recommendationHeading { margin-bottom: 0.9rem; }
+.recommendationEmpty { padding: 1.25rem 1rem; border-style: solid; background: color-mix(in srgb, var(--card-bg-light) 80%, var(--bg-light)); }
+.resultsHeader { margin-top: 0.5rem; padding: 1.7rem 0 0.8rem; border-top: 1px solid var(--line-light); }
+.resultsHeader p { font-size: 0.88rem; }
+.grid { gap: 1.2rem; }
+:global(body.dark) .recommendationEmpty { background: color-mix(in srgb, var(--card-bg-dark) 86%, var(--bg-dark)); }
+:global(body.dark) .resultsHeader { border-color: var(--line-dark); }
+
+@media (min-width: 48rem) {
+  .hero { padding-top: 1.8rem; }
+  .searchPanel { padding: 1.15rem 1.2rem; }
+  .recommendations { padding-top: 0.5rem; }
+  .grid { gap: 1.35rem; }
+}

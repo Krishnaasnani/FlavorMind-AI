@@ -1,0 +1,16 @@
+.card { display: grid; gap: 0.8rem; padding-bottom: 1rem; overflow: hidden; border: 1px solid var(--line-light); border-radius: var(--radius); background: var(--card-bg-light); }
+:global(body.dark) .card { border-color: var(--line-dark); background: var(--card-bg-dark); }
+.image, .line, .buttons span { position: relative; overflow: hidden; border-radius: 0.45rem; background: #e9e9e7; }
+:global(body.dark) .image, :global(body.dark) .line, :global(body.dark) .buttons span { background: #25334f; }
+.image::after, .line::after, .buttons span::after { position: absolute; inset: 0; content: ""; background: linear-gradient(100deg, transparent 20%, rgba(255,255,255,0.62) 50%, transparent 80%); animation: shimmer 1.3s infinite; transform: translateX(-100%); }
+.image { aspect-ratio: 16 / 10; border-radius: 0; }
+.line { height: 0.75rem; margin: 0 1rem; }
+.title { width: 76%; height: 1rem; }
+.short { width: 49%; }
+.buttons { display: flex; gap: 0.5rem; margin: 0 1rem; }
+.buttons span { width: 40%; height: 2.3rem; }
+@keyframes shimmer { 100% { transform: translateX(100%); } }
+
+.card { border-radius: var(--radius); box-shadow: var(--shadow-soft); }
+.image, .line, .buttons span { background: color-mix(in srgb, var(--line-light) 70%, var(--card-bg-light)); }
+:global(body.dark) .image, :global(body.dark) .line, :global(body.dark) .buttons span { background: color-mix(in srgb, var(--line-dark) 72%, var(--card-bg-dark)); }

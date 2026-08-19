@@ -1,0 +1,26 @@
+.page { display: grid; place-items: center; min-height: min(680px, calc(100vh - 10rem)); padding: 1rem 0; }
+.card { width: min(100%, 30rem); max-width: 30rem; padding: clamp(1.35rem, 5vw, 2.25rem); border: 1px solid var(--line-light); border-radius: var(--radius); background: var(--card-bg-light); box-shadow: var(--shadow); }
+:global(body.dark) .card { border-color: var(--line-dark); background: var(--card-bg-dark); }
+.eyebrow { margin: 0 0 0.5rem; color: var(--primary-strong); font-size: 0.7rem; font-weight: 850; letter-spacing: 0.12em; text-transform: uppercase; }
+.card h1 { margin: 0; color: var(--text-light); font-family: Georgia, serif; font-size: clamp(1.8rem, 7vw, 2.5rem); letter-spacing: -0.04em; }
+:global(body.dark) .card h1 { color: var(--text-dark); }
+.intro { margin: 0.55rem 0 1.35rem; color: var(--muted-light); font-size: 0.92rem; }
+:global(body.dark) .intro { color: var(--muted-dark); }
+.form { display: grid; gap: 0.9rem; }
+.field { display: grid; gap: 0.35rem; }
+.field label { color: var(--text-light); font-size: 0.8rem; font-weight: 750; }
+:global(body.dark) .field label { color: var(--text-dark); }
+.field input { width: 100%; min-height: 2.7rem; padding: 0.65rem 0.75rem; border: 1px solid var(--line-light); border-radius: 0.65rem; color: var(--text-light); background: var(--bg-light); }
+:global(body.dark) .field input { border-color: var(--line-dark); color: var(--text-dark); background: var(--bg-dark); }
+.field input[aria-invalid="true"] { border-color: #b53c2b; }
+.remember { display: flex; align-items: center; gap: 0.45rem; color: var(--muted-light); font-size: 0.8rem; }
+:global(body.dark) .remember { color: var(--muted-dark); }
+.remember input { accent-color: var(--primary); }
+.submit { min-height: 2.8rem; border: 0; border-radius: 0.7rem; color: #fff; background: var(--primary); font-weight: 800; }
+.submit:hover { background: var(--primary-strong); }
+.error { margin: 0; padding: 0.65rem 0.75rem; border: 1px solid #edb8ae; border-radius: 0.6rem; color: #a53323; background: #fff2ef; font-size: 0.82rem; }
+.switch { margin: 1.2rem 0 0; color: var(--muted-light); font-size: 0.84rem; text-align: center; }
+:global(body.dark) .switch { color: var(--muted-dark); }
+.switch a, .back a { color: var(--primary-strong); font-weight: 800; }
+.back { margin: 1rem 0 0; color: var(--muted-light); font-size: 0.82rem; text-align: center; }
+:global(body.dark) .back { color: var(--muted-dark); }

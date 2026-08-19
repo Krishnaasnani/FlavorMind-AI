@@ -1,0 +1,2 @@
+.loading { margin: 4rem 0; color: var(--muted-light); text-align: center; }
+:global(body.dark) .loading { color: var(--muted-dark); }

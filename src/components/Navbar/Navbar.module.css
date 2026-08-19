@@ -1,0 +1,45 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  border-bottom: 1px solid var(--line-light);
+  background: color-mix(in srgb, var(--card-bg-light) 94%, transparent);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 1px 0 rgba(35, 42, 48, 0.03);
+}
+
+:global(body.dark) .header { border-color: var(--line-dark); background: color-mix(in srgb, var(--card-bg-dark) 92%, transparent); }
+
+.nav { display: grid; grid-template-columns: 1fr auto auto auto; align-items: center; gap: 0.65rem; width: min(1180px, 100% - 2rem); min-height: 4.4rem; margin: 0 auto; }
+.brand { display: inline-flex; align-items: center; gap: 0.45rem; width: fit-content; color: var(--text-light); font-family: Georgia, serif; font-size: 1.1rem; font-weight: 700; letter-spacing: -0.03em; text-decoration: none; }
+:global(body.dark) .brand { color: var(--text-dark); }
+.menuButton, .themeButton { min-height: 2.4rem; border: 1px solid var(--line-light); border-radius: 0.65rem; color: var(--text-light); background: var(--card-bg-light); font-size: 0.78rem; font-weight: 750; transition: all 0.25s ease; }
+.menuButton { display: inline-flex; align-items: center; gap: 0.25rem; padding: 0 0.65rem; }
+.themeButton { padding: 0 0.65rem; }
+:global(body.dark) .menuButton, :global(body.dark) .themeButton { border-color: var(--line-dark); color: var(--text-dark); background: var(--card-bg-dark); }
+.links { display: none; grid-column: 1 / -1; grid-row: 2; padding: 0.15rem 0 0.75rem; }
+.links.open { display: grid; }
+.links a { padding: 0.58rem 0.72rem; border-radius: 0.6rem; color: var(--muted-light); font-size: 0.84rem; font-weight: 650; text-decoration: none; transition: all 0.25s ease; }
+:global(body.dark) .links a { color: var(--muted-dark); }
+.links a:hover, .links a[aria-current="page"] { color: var(--primary-strong); background: var(--primary-soft); }
+.links a[aria-current="page"] { font-weight: 800; }
+.loginLink, .accountButton { min-height: 2.4rem; padding: 0 0.7rem; border: 1px solid var(--line-light); border-radius: 0.65rem; color: var(--text-light); background: var(--card-bg-light); font-size: 0.78rem; font-weight: 800; text-decoration: none; }
+.loginLink { display: inline-flex; align-items: center; }
+.account { position: relative; }
+.accountButton { display: inline-flex; align-items: center; gap: 0.35rem; }
+.avatar { display: grid; place-items: center; width: 1.35rem; height: 1.35rem; border-radius: 50%; color: #fff; background: var(--primary); font-size: 0.7rem; }
+.accountName { max-width: 7rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.accountMenu { position: absolute; top: calc(100% + 0.5rem); right: 0; z-index: 25; display: grid; min-width: 8.5rem; padding: 0.35rem; border: 1px solid var(--line-light); border-radius: 0.7rem; background: var(--card-bg-light); box-shadow: var(--shadow); }
+.accountMenu a, .accountMenu button { padding: 0.55rem 0.65rem; border: 0; border-radius: 0.45rem; color: var(--text-light); background: transparent; font-size: 0.78rem; text-align: left; text-decoration: none; }
+.accountMenu a:hover, .accountMenu button:hover { color: var(--primary-strong); background: var(--primary-soft); }
+.accountError { margin: 0.25rem 0.45rem 0.35rem; color: #a53323; font-size: 0.7rem; line-height: 1.35; }
+:global(body.dark) .loginLink, :global(body.dark) .accountButton, :global(body.dark) .accountMenu { border-color: var(--line-dark); color: var(--text-dark); background: var(--card-bg-dark); }
+:global(body.dark) .accountMenu a, :global(body.dark) .accountMenu button { color: var(--text-dark); }
+
+@media (min-width: 48rem) {
+  .nav { display: flex; width: min(1180px, 100% - 4rem); }
+  .brand { margin-right: auto; font-size: 1.22rem; }
+  .menuButton { display: none; }
+  .links { display: flex; grid-column: auto; grid-row: auto; gap: 0.15rem; padding: 0; }
+  .themeButton:hover, .menuButton:hover { border-color: var(--primary); color: var(--primary-strong); transform: translateY(-1px); }
+}

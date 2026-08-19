@@ -1,0 +1,52 @@
+.card { overflow: hidden; border: 1px solid var(--line-light); border-radius: var(--radius); background: var(--card-bg-light); box-shadow: 0 3px 10px rgba(45, 52, 54, 0.04); transition: all 0.3s ease; }
+:global(body.dark) .card { border-color: var(--line-dark); background: var(--card-bg-dark); }
+.card:hover { border-color: color-mix(in srgb, var(--primary) 45%, var(--line-light)); box-shadow: var(--shadow); transform: translateY(-0.28rem); }
+.imageWrap { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: var(--primary-soft); }
+.imageWrap img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 0.45s ease; }
+.card:hover .imageWrap img { transform: scale(1.04); }
+.favorite { position: absolute; top: 0.7rem; right: 0.7rem; display: grid; place-items: center; width: 2.3rem; height: 2.3rem; padding: 0; border: 0; border-radius: 50%; color: var(--primary-strong); background: rgba(255,255,255,0.93); box-shadow: 0 3px 12px rgba(0,0,0,0.15); font-size: 1.35rem; line-height: 1; transition: all 0.3s ease; }
+.favorite:hover, .favorite.saved { color: #fff; background: var(--primary); transform: scale(1.07); }
+.content { display: grid; gap: 0.75rem; padding: 1rem; }
+.cuisine { margin: 0; color: var(--primary-strong); font-size: 0.7rem; font-weight: 850; letter-spacing: 0.08em; text-transform: uppercase; }
+.content h2 { min-height: 2.5em; margin: 0; color: var(--text-light); font-family: Georgia, serif; font-size: 1.18rem; line-height: 1.2; }
+:global(body.dark) .content h2 { color: var(--text-dark); }
+.content h2 a { text-decoration: none; }
+.content h2 a:hover { color: var(--primary-strong); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.16em; }
+.stats { display: flex; flex-wrap: wrap; gap: 0.55rem; margin: 0; color: var(--muted-light); font-size: 0.78rem; font-weight: 650; }
+:global(body.dark) .stats { color: var(--muted-dark); }
+.actions { display: flex; gap: 0.5rem; }
+.planButton, .aiButton { min-height: 2.35rem; padding: 0 0.65rem; border-radius: 0.55rem; font-size: 0.75rem; font-weight: 800; transition: all 0.3s ease; }
+.planButton { flex: 1; border: 1px solid var(--primary); color: #fff; background: var(--primary); }
+.planButton:hover { background: var(--primary-strong); }
+.aiButton { border: 1px solid var(--line-light); color: var(--primary-strong); background: var(--primary-soft); }
+:global(body.dark) .aiButton { border-color: var(--line-dark); }
+.aiButton:hover { border-color: var(--primary); }
+.insights { display: grid; gap: 0.32rem; margin: 0; padding: 0.7rem 0.8rem 0.7rem 1.75rem; border-radius: 0.65rem; color: var(--text-light); background: color-mix(in srgb, var(--primary-soft) 70%, var(--card-bg-light)); font-size: 0.76rem; line-height: 1.4; }
+:global(body.dark) .insights { color: var(--text-dark); background: rgba(230, 126, 34, 0.15); }
+.error { margin: 0; color: #b63a2d; font-size: 0.76rem; line-height: 1.35; }
+.emptyInsight { margin: 0; color: var(--muted-light); font-size: 0.76rem; line-height: 1.35; }
+:global(body.dark) .emptyInsight { color: var(--muted-dark); }
+.explanation { margin: 0; padding: 0.7rem 0.8rem; border-radius: 0.65rem; color: var(--text-light); background: color-mix(in srgb, var(--primary-soft) 70%, var(--card-bg-light)); font-size: 0.76rem; line-height: 1.45; }
+:global(body.dark) .explanation { color: var(--text-dark); background: rgba(230, 126, 34, 0.15); }
+
+/* Consistent card rhythm across Home, Favorites, and planning surfaces. */
+.card { min-width: 0; border-radius: var(--radius); box-shadow: var(--shadow-soft); transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease; }
+.card:hover { border-color: color-mix(in srgb, var(--primary) 38%, var(--line-light)); box-shadow: var(--shadow); transform: translateY(-0.2rem); }
+.imageWrap { aspect-ratio: 4 / 3; }
+.favorite { top: 0.8rem; right: 0.8rem; width: 2.4rem; height: 2.4rem; }
+.content { gap: 0.7rem; padding: 1.05rem; }
+.cuisine { font-size: 0.66rem; letter-spacing: 0.1em; }
+.content h2 { min-height: 2.7em; font-size: 1.22rem; letter-spacing: -0.02em; }
+.stats { gap: 0.45rem 0.65rem; font-size: 0.76rem; }
+.actions { flex-wrap: wrap; align-items: stretch; }
+.planButton, .aiButton { min-height: 2.45rem; border-radius: 0.6rem; }
+.planButton { min-width: 8rem; }
+.aiButton { flex: 0 1 auto; }
+.explanation { border: 1px solid color-mix(in srgb, var(--primary) 16%, transparent); background: color-mix(in srgb, var(--primary-soft) 78%, var(--card-bg-light)); }
+:global(body.dark) .explanation { border-color: color-mix(in srgb, var(--primary) 28%, transparent); background: rgba(230,126,34,0.13); }
+
+@media (max-width: 30rem) {
+  .actions { display: grid; grid-template-columns: 1fr 1fr; }
+  .planButton { grid-column: 1 / -1; width: 100%; }
+  .aiButton { width: 100%; }
+}

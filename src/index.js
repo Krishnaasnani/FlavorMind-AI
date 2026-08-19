@@ -3,11 +3,20 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { FavoritesProvider } from './context/FavoritesContext';
+import { MealPlannerProvider } from './context/MealPlannerContext';
+import { ThemeProvider } from './context/ThemeContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider>
+      <FavoritesProvider>
+        <MealPlannerProvider>
+          <App />
+        </MealPlannerProvider>
+      </FavoritesProvider>
+    </ThemeProvider>
   </React.StrictMode>
 );
 

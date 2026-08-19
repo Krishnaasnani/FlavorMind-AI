@@ -1,0 +1,25 @@
+.main {
+  width: min(1180px, 100% - 2rem);
+  min-height: calc(100vh - 4.75rem);
+  margin: 0 auto;
+  padding: 2.35rem 0 6rem;
+}
+
+.pageLoading {
+  margin: 4rem 0;
+  color: var(--muted-light);
+  text-align: center;
+}
+
+:global(body.dark) .pageLoading { color: var(--muted-dark); }
+
+@media (min-width: 48rem) {
+  .main {
+    width: min(1180px, 100% - 4rem);
+    padding-top: 3.5rem;
+  }
+}
+
+@media (max-width: 47.99rem) {
+  .main { padding-bottom: 5.5rem; }
+}

@@ -1,0 +1,4 @@
+.container { z-index: 40 !important; }
+.toast { border: 1px solid var(--line-light) !important; border-radius: 0.7rem !important; color: var(--text-light) !important; background: var(--card-bg-light) !important; box-shadow: var(--shadow) !important; font-size: 0.85rem !important; }
+:global(body.dark) .toast { border-color: var(--line-dark) !important; color: var(--text-dark) !important; background: var(--card-bg-dark) !important; }
+.toast { border-radius: var(--radius-sm) !important; font-weight: 650 !important; }
