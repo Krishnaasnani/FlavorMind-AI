@@ -18,31 +18,6 @@ RecipeFinder AI is a responsive recipe discovery app built around TheMealDB. Sea
 - Use Ask AI Chef, ingredient substitutions, health explanations, and “Why this recipe?” explanations when an AI provider is configured.
 - Responsive layout with light and dark themes.
 
-## Screenshots
-
-### Home
-
-![RecipeFinder AI Home](Screenshots/home.png.png)
-
-### Recipe Search & Filters
-
-![Recipe Search](Screenshots/recipe-search.png.png)
-
-### Favorites
-
-![Favorites](Screenshots/Favorites.png.png)
-
-### AI Chef
-
-![AI Chef](Screenshots/ai-chef.png.png)
-
-### Weekly Meal Planner
-
-![Meal Planner](Screenshots/meal-planner.png.png)
-
-### Shopping List
-
-![Shopping List](Screenshots/shopping-list.png.png)
 
 ## Tech stack
 
@@ -140,3 +115,23 @@ npm run build
 - Expand preference controls and recommendation evaluation with user feedback.
 - Add a dedicated nutrition/data-enrichment provider if verified nutrition data is required.
 - Add CI checks, production observability, and broader end-to-end coverage.
+
+## Screenshots
+
+### Home
+![RecipeFinder AI Home](Screenshots/home.png.png)
+
+### Recipe Search & Filters
+![Recipe Search](Screenshots/recipe-search.png.png)
+
+### Favorites
+![Favorites](Screenshots/Favorites.png.png)
+
+### AI Chef
+![AI Chef](Screenshots/ai-chef.png.png)
+
+### Weekly Meal Planner
+![Meal Planner](Screenshots/meal-planner.png.png)
+
+### Shopping List
+![Shopping List](Screenshots/shopping-list.png.png)
